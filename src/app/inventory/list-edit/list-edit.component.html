@@ -1,0 +1,18 @@
+<div class="container">
+    <!-- <form (ngSubmit)="addInventory(f)" #f="ngForm"> -->
+        <form [formGroup] = "editForm">
+        <div class="form-group">
+            <input formControlName="name" type="text" placeholder="item name" name="name">
+        </div>
+
+        <div class="form-group">
+            <input formControlName="upc" type="text" placeholder="upc" name="upc"> 
+        </div>
+
+        <div class="form-group">
+            <input formControlName="amount" type="number" placeholder="amount" name="amount">
+        </div>
+        <button class="btn btn-success" type="submit" [disabled]="!editForm.valid" (click) = "addInventory()">Add</button>
+        <button class="btn btn-danger" type="button" (click)="onDelete()" *ngIf="editMode">Delete</button>
+    </form>
+</div>

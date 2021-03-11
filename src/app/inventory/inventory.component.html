@@ -1,0 +1,26 @@
+<div class="container">
+    <app-header></app-header>
+
+    <div class="col-xs-10">
+        <app-list-edit></app-list-edit>
+        <hr>
+        <p>Current Inventory:</p>
+       
+         
+        
+            <div class="list-group-item d-block" 
+            style="cursor: pointer"
+            *ngFor="let inventory of inventorys" >
+            <p>Item: {{ inventory.name }} </p> 
+            <p>UPC: {{ inventory.upc }} </p> 
+            <p>Amount: {{ inventory.amount }} </p>
+            </div>
+     
+    </div>
+
+
+            
+        
+</div> 
+
+

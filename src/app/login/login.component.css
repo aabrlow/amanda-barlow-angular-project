@@ -1,0 +1,47 @@
+.container  {
+    
+    background-color: rgba(95, 89, 134, 0.842);
+    border-radius: 25px;
+    box-shadow: 10px 10px 5px rgba(54, 63, 65, 0.788);
+    color: white;
+    padding: 20px;
+    width: 400px;
+    max-height: 70vh;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    height: 900px;
+}
+
+
+
+h2 {
+    margin-left: 20px;
+}
+
+input {
+    background-color: rgb(148, 150, 151);
+    border: none;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    padding: 9px;
+    width: 300px;
+    margin-left: 20px;
+    margin-top: 30px;
+
+}
+
+input::placeholder {
+    color: white;
+}
+button {
+    background-color: rgb(38, 7, 53);
+    border: none;
+    display: block;
+    margin-left: 60px;
+    margin-top: 80px;
+    padding: 10px;
+    width: 70%
+}
+

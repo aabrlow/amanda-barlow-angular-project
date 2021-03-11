@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    background: url(https://i.pinimg.com/originals/19/71/ab/1971ab731c0b89bf46bcaf708976fc91.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+   justify-content: center;
+   align-content: center;
+    min-height: 100vh;
+    min-width: 100%;
+}
