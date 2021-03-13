@@ -19,10 +19,7 @@ export class InventoryListService {
       return this.inventory[index];
     }
 
-    // addInventory(inventory: currentInventory){
-    //     this.inventory.push(inventory);
-    //     this.inventoryChanged.next(this.inventory.slice());
-    // }
+   
 
     updateInventory(index: number, newInventory: currentInventory) {
       this.inventory[index] = newInventory;

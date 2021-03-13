@@ -38,29 +38,18 @@ export class InventoryComponent implements OnInit {
 
   
 
-//  editMode = false;
-//  editItemIndex: number;
-//  editedItem: currentInventory;
-//  inventoryChanged = new Subject<currentInventory[]>();
-//  startEditing = new Subject<number>();
-//  private inventory: currentInventory[];
 
   ngOnInit(){
 
     this.showInventory();
     
-  //    this.subscription = this.leService.startEditing.subscribe(
-  //      (index: number) => {
-  //       this.editItemIndex = index;
-  //         this.editMode = true;
-  //         this.editedItem = this.leService.getInventory(index);
-  // });
+ 
 }
 
     showInventory() {
       this.rest.getInventory().then( res => {
         this.inventorys = res.data;
-        console.log(this.inventorys);
+       
       });
     }
     
@@ -69,7 +58,9 @@ export class InventoryComponent implements OnInit {
        }
 
        inventoryDelete(id) {
+         this.rest.onDelete(id).then(res => {
         this.showInventory();
+         });
        }
 }
 
