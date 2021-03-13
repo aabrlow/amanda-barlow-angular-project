@@ -29,7 +29,7 @@ export class InventoryListService {
       this.inventoryChanged.next(this.inventory.slice());
     }
 
-    deleteInventory(index: number) {
+    onDelete(index: number) {
       this.inventory.splice(index, 1);
       this.inventoryChanged.next(this.inventory.slice());
     }

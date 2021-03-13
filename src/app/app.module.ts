@@ -7,15 +7,16 @@ import { HeaderComponent } from './header/header.component';
 
 import { LoginComponent } from './login/login.component';
 import { InventoryComponent } from './inventory/inventory.component';
-
+import { CommonModule } from '@angular/common';
 import { ConventionComponent } from './convention/convention.component';
 
 import { SetupComponent } from './convention/setup/setup.component';
-import { ListEditComponent } from './inventory/list-edit/list-edit.component';
-import { InventoryListService } from './inventory/list-edit/list-edit.service';
+
+import { InventoryListService } from './inventory/list-edit.service';
 import { JwtService } from './jwt.service';
 import { RestService } from './rest.service';
 import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -29,9 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
   
     ConventionComponent,
     
-    SetupComponent,
+    SetupComponent
     
-    ListEditComponent
+   
     
   
  
@@ -42,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    CommonModule,
+       FormsModule
   ],
   providers: [InventoryListService, JwtService, RestService],
   bootstrap: [AppComponent]

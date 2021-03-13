@@ -43,7 +43,18 @@ export class RestService {
       },
     })
     .toPromise();
-}
-}
+  }
 
+  onDelete(id):  Promise<any> {
+    
+      const jwt = this.jwtService.getJwt();
+      return this.http
+        .delete(`${environment.apiUrl}/deleteInventory/${id}`, {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        })
+        .toPromise();
+    }
+  }
 

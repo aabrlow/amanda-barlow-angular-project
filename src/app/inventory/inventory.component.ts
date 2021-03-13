@@ -1,8 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestService } from '../rest.service';
+import { InventoryListService } from './list-edit.service'
+import { currentInventory } from 'src/app/shared/currentInventory.model';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { Subscription } from 'rxjs';
 
-import { InventoryListService } from './list-edit/list-edit.service';
+
 
 
 
@@ -13,38 +18,58 @@ import { InventoryListService } from './list-edit/list-edit.service';
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.css']
 })
-export class InventoryComponent implements OnInit, OnDestroy {
+export class InventoryComponent implements OnInit { 
   inventorys;
-  private subscription: Subscription;
+  editForm: FormGroup;
+  editMode = false;
+  startEditing = new Subject<number>();
+  editItemIndex: number;
+  editedItem: currentInventory;
+   subscription: Subscription;
 
- constructor(private leService: InventoryListService, private readonly rest: RestService) { }
+
+ constructor(private leService: InventoryListService , private fb: FormBuilder, private rest: RestService, private router: Router) { 
+  this.editForm = this.fb.group({
+    name: ['', [Validators.required]],
+    upc: ['', [Validators.required]],
+    amount:  ['', [Validators.required]]
+  });
+ }
+
+  
+
+//  editMode = false;
+//  editItemIndex: number;
+//  editedItem: currentInventory;
+//  inventoryChanged = new Subject<currentInventory[]>();
+//  startEditing = new Subject<number>();
+//  private inventory: currentInventory[];
 
   ngOnInit(){
 
-    this.rest.getInventory().then( res => {
-      this.inventorys = res.data;
-      console.log(this.inventorys);
-    });
+    this.showInventory();
+    
+  //    this.subscription = this.leService.startEditing.subscribe(
+  //      (index: number) => {
+  //       this.editItemIndex = index;
+  //         this.editMode = true;
+  //         this.editedItem = this.leService.getInventory(index);
+  // });
+}
 
-    // this.inventorys = this.leService.getInventorys();
-    // this.subscription = this.leService.inventoryChanged.subscribe(
-      // (inventory: currentInventory[]) => {
-        // this.inventorys = inventory;
-      // }
-    // );
-  }
+    showInventory() {
+      this.rest.getInventory().then( res => {
+        this.inventorys = res.data;
+        console.log(this.inventorys);
+      });
+    }
+    
+    addInventory(){
+          this.rest.addInventory(this.editForm.value);
+       }
 
-  onEditItem(index: number){
-    this.leService.startEditing.next(index);
-  }
-
- 
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
- 
-
+       inventoryDelete(id) {
+        this.showInventory();
+       }
 }
 
